@@ -32,19 +32,23 @@ function reverse( string ) {
 function Phrase( content ) {
      this.content = content;
 
-     // Return content processed for palindrome testing
-     this.processedContent = function processedContent() {
-          return this.letters().toLowerCase();
-     }
-
      // Return only letters in the content.
      this.letters = function letters() {
           return ( this.content.match( /[a-z]/ig ) || [] ).join( "" );
      }
 
+     // Return content processed for palindrome testing
+     this.processedContent = function processedContent() {
+          return this.letters().toLowerCase();
+     }
+
      // Return true for palindrome, false otherwise.
      this.palindrome = function palindrome() {
-          return this.processedContent() === reverse( this.processedContent() );
+          if ( this.letters() ) {
+               return this.processedContent() === reverse( this.processedContent() );
+          } else {
+               return false;
+          }
      }
 }
 },{}]},{},[1]);
